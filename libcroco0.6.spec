@@ -12,7 +12,6 @@ License: 	LGPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 URL: 		http://savannah.nongnu.org/projects/libcroco
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libxml2-devel
 BuildRequires:  pango-devel
 BuildRequires:  libgnomeui2-devel
