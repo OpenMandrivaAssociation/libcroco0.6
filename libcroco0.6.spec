@@ -7,7 +7,7 @@
 Name:		%name
 Summary:	CSS2 parser library
 Version: 	0.6.1
-Release: %mkrel 2
+Release: %mkrel 3
 License: 	LGPL
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
