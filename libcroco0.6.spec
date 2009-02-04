@@ -6,11 +6,12 @@
 
 Name:		%name
 Summary:	CSS2 parser library
-Version: 	0.6.1
-Release: %mkrel 4
-License: 	LGPL
+Version: 	0.6.2
+Release: %mkrel 1
+License: 	LGPLv2
 Group:		System/Libraries
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
+Patch:		libcroco-0.6.2-format-strings.patch
 URL: 		http://savannah.nongnu.org/projects/libcroco
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libxml2-devel
@@ -54,6 +55,7 @@ csslint, a Cascading Style Sheets checker.
 
 %prep
 %setup -q -n %oname-%version
+%patch -p1
 
 %build
 
