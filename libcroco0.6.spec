@@ -83,4 +83,5 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
+%doc %{_datadir}/gtk-doc/html/libcroco/
 
