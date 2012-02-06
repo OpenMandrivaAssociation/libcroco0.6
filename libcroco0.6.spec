@@ -6,7 +6,7 @@
 
 Name:		%{oname}%{majorminor}
 Summary:	CSS2 parser library
-Version: 	0.6.3
+Version: 	0.6.4
 Release:	1
 License: 	LGPLv2
 Group:		System/Libraries
