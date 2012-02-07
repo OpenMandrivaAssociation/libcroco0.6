@@ -12,7 +12,6 @@ License: 	LGPLv2
 Group:		System/Libraries
 URL: 		http://savannah.nongnu.org/projects/libcroco
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.xz
-Patch0:		libcroco-0.6.2-format-strings.patch
 
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
