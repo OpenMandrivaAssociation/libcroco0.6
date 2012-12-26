@@ -1,3 +1,5 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 %define oname	libcroco
 %define api	0.6
 %define major	3
@@ -11,7 +13,7 @@ Release:	2
 License:	LGPLv2
 Group:		System/Libraries
 URL:		http://savannah.nongnu.org/projects/libcroco
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{url_ver}/%{oname}-%{version}.tar.xz
 
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
