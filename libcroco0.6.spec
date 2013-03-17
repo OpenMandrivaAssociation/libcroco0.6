@@ -14,6 +14,7 @@ License:	LGPLv2
 Group:		System/Libraries
 URL:		http://savannah.nongnu.org/projects/libcroco
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{url_ver}/%{oname}-%{version}.tar.xz
+Patch0:		libcroco-0.6-aarch64.patch
 
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -53,6 +54,7 @@ csslint, a Cascading Style Sheets checker.
 
 %prep
 %setup -qn %{oname}-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x \
