@@ -3,16 +3,16 @@
 %define oname	libcroco
 %define api	0.6
 %define major	3
-%define libname	%mklibname croco%{api}_ %{major}
-%define devname	%mklibname croco%{api} -d
+%define libname	%mklibname croco %{api} %{major}
+%define devname	%mklibname croco %{api} -d
 
-Name:		%{oname}%{api}
 Summary:	CSS2 parser library
+Name:		%{oname}%{api}
 Version:	0.6.8
 Release:	2
 License:	LGPLv2
 Group:		System/Libraries
-URL:		http://savannah.nongnu.org/projects/libcroco
+Url:		http://savannah.nongnu.org/projects/libcroco
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{url_ver}/%{oname}-%{version}.tar.xz
 Patch0:		libcroco-0.6-aarch64.patch
 
@@ -54,7 +54,7 @@ csslint, a Cascading Style Sheets checker.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch0 -p1
+%apply_patches
 
 %build
 %configure2_5x \
@@ -72,13 +72,13 @@ csslint, a Cascading Style Sheets checker.
 %{_bindir}/csslint-%{api}
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libcroco-%{api}.so.%{major}*
 
 %files -n %{devname}
+%doc %{_datadir}/gtk-doc/html/libcroco/
 %{_bindir}/croco-%{api}-config
 %{multiarch_bindir}/croco-%{api}-config
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%doc %{_datadir}/gtk-doc/html/libcroco/
 
