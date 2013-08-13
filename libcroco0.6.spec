@@ -1,15 +1,15 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define oname	libcroco
-%define api	0.6
-%define major	3
-%define libname	%mklibname croco %{api} %{major}
-%define devname	%mklibname croco %{api} -d
+%define oname libcroco
+%define api 0.6
+%define major 3
+%define libname %mklibname croco %{api} %{major}
+%define devname %mklibname croco %{api} -d
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
 Version:	0.6.8
-Release:	2
+Release:	3
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://savannah.nongnu.org/projects/libcroco
