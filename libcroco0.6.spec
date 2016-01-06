@@ -8,13 +8,12 @@
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
-Version:	0.6.8
-Release:	11
+Version:	0.6.11
+Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://savannah.nongnu.org/projects/libcroco
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{url_ver}/%{oname}-%{version}.tar.xz
-Patch0:		libcroco-0.6-aarch64.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{url_ver}/%{oname}-%{version}.tar.xz
 
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
