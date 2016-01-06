@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   libcroco-0.6.8.tar.xz: 23a5c33a2a86d5e46173234f5fa88ac1e15de035
+sources:
+  libcroco-0.6.11.tar.xz: 35203ccb3c30ae1d0956a362c6aabe6109e582f3
