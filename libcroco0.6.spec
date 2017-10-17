@@ -64,7 +64,9 @@ csslint, a Cascading Style Sheets checker.
 %install
 %makeinstall_std
 
+%if %{mdvver} <= 3000000
 %multiarch_binaries %{buildroot}%{_bindir}/croco-%{api}-config
+%endif
 
 %files utils
 %doc README AUTHORS COPYING COPYING.LIB ChangeLog NEWS
@@ -76,7 +78,9 @@ csslint, a Cascading Style Sheets checker.
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/libcroco/
 %{_bindir}/croco-%{api}-config
+%if %{mdvver} <= 3000000
 %{multiarch_bindir}/croco-%{api}-config
+%endif
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
