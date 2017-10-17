@@ -8,7 +8,7 @@
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
-Version:	0.6.11
+Version:	0.6.12
 Release:	1
 License:	LGPLv2
 Group:		System/Libraries
@@ -56,7 +56,7 @@ csslint, a Cascading Style Sheets checker.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 
 %make
