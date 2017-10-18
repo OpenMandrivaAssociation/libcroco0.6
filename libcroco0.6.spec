@@ -8,7 +8,7 @@
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
-Version:	0.6.11
+Version:	0.6.12
 Release:	1
 License:	LGPLv2
 Group:		System/Libraries
@@ -56,7 +56,7 @@ csslint, a Cascading Style Sheets checker.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 
 %make
@@ -64,7 +64,9 @@ csslint, a Cascading Style Sheets checker.
 %install
 %makeinstall_std
 
+%if %{mdvver} <= 3000000
 %multiarch_binaries %{buildroot}%{_bindir}/croco-%{api}-config
+%endif
 
 %files utils
 %doc README AUTHORS COPYING COPYING.LIB ChangeLog NEWS
@@ -76,7 +78,9 @@ csslint, a Cascading Style Sheets checker.
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/libcroco/
 %{_bindir}/croco-%{api}-config
+%if %{mdvver} <= 3000000
 %{multiarch_bindir}/croco-%{api}-config
+%endif
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
