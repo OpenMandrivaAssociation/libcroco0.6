@@ -14,9 +14,9 @@ License:	LGPLv2
 Group:		System/Libraries
 Url:		http://savannah.nongnu.org/projects/libcroco
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/%{url_ver}/%{oname}-%{version}.tar.xz
-
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(icu-i18n)
 
 %description
 libcroco is a standalone css2 parsing library.
@@ -53,16 +53,16 @@ csslint, a Cascading Style Sheets checker.
 
 %prep
 %setup -qn %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %configure \
 	--disable-static
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %if %{mdvver} <= 3000000
 %multiarch_binaries %{buildroot}%{_bindir}/croco-%{api}-config
