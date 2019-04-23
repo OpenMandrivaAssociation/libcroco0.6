@@ -8,8 +8,8 @@
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
-Version:	0.6.12
-Release:	2
+Version:	0.6.13
+Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://savannah.nongnu.org/projects/libcroco
