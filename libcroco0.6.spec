@@ -1,3 +1,8 @@
+# libcroco0.6 is used by librsvg, librsvg is used by wine
+%ifarch %{x86_64}
+%bcond_without compat32
+%endif
+
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define oname libcroco
@@ -5,11 +10,13 @@
 %define major 3
 %define libname %mklibname croco %{api} %{major}
 %define devname %mklibname croco %{api} -d
+%define lib32name %mklib32name croco %{api} %{major}
+%define dev32name %mklib32name croco %{api} -d
 
 Summary:	CSS2 parser library
 Name:		%{oname}%{api}
 Version:	0.6.13
-Release:	2
+Release:	3
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://savannah.nongnu.org/projects/libcroco
@@ -17,6 +24,13 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libcroco/%{url_ver}/%{oname}-%{v
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
+%if %{with compat32}
+BuildRequires:	devel(libglib-2.0)
+BuildRequires:	devel(libxml2)
+BuildRequires:	devel(libz)
+BuildRequires:	devel(libbz2)
+BuildRequires:	devel(libffi)
+%endif
 
 %description
 libcroco is a standalone css2 parsing library.
@@ -36,7 +50,6 @@ and a css object model like api.
 Summary:	Libraries and include files for developing with libcroco
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname croco0.6_3 -d} < 0.6.5
 
 %description -n %{devname}
@@ -51,17 +64,52 @@ Group:		Text tools
 This contains the example apps that come with libcroco. At the moment this is
 csslint, a Cascading Style Sheets checker.
 
+%if %{with compat32}
+%package -n %{lib32name}
+Summary:	CSS2 parser library (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32name}
+libcroco is a standalone css2 parsing library.
+It provides a low level event driven SAC like api
+and a css object model like api.
+
+%package -n %{dev32name}
+Summary:	Libraries and include files for developing with libcroco (32-bit)
+Group:		Development/C
+Requires:	%{devname} = %{version}-%{release}
+Requires:	%{lib32name} = %{version}-%{release}
+
+%description -n %{dev32name}
+This package provides the necessary development libraries and include
+files to allow you to develop with libcroco?
+%endif
+
 %prep
 %autosetup -n %{oname}-%{version} -p1
+export CONFIGURE_TOP="$(pwd)"
+%if %{with compat32}
+mkdir build32
+cd build32
+%configure32
+cd ..
+%endif
+
+mkdir build
+cd build
+%configure
 
 %build
-%configure \
-	--disable-static
-
-%make_build
+%if %{with compat32}
+%make_build -C build32
+%endif
+%make_build -C build
 
 %install
-%make_install
+%if %{with compat32}
+%make_install -C build32
+%endif
+%make_install -C build
 
 %files utils
 %doc README AUTHORS COPYING COPYING.LIB ChangeLog NEWS
@@ -71,9 +119,17 @@ csslint, a Cascading Style Sheets checker.
 %{_libdir}/libcroco-%{api}.so.%{major}*
 
 %files -n %{devname}
-%doc %{_datadir}/gtk-doc/html/libcroco/
+%optional %doc %{_datadir}/gtk-doc/html/libcroco/
 %{_bindir}/croco-%{api}-config
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
+%if %{with compat32}
+%files -n %{lib32name}
+%{_prefix}/lib/libcroco-%{api}.so.%{major}*
+
+%files -n %{dev32name}
+%{_prefix}/lib/*.so
+%{_prefix}/lib/pkgconfig/*
+%endif
